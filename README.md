@@ -1,4 +1,3 @@
-# Top Technical Tips
-## Blogs by liborty@github
+# Top Technical Tips (blogs by liborty@github.com)
 
-### [The Joy of Bashing, 02.01.2020](./2010-01-02-the-joy-of-bashing.md)
+## [The Joy of Bashing, 2 Jan 2020](./2010-01-02-the-joy-of-bashing.md)
