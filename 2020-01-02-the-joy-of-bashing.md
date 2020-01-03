@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: default
 title: The Joy of Bashing
 date:   2020-01-02
 categories: bash script retro programming
