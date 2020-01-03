@@ -73,8 +73,20 @@ the decimal places, though? Are we just going round in circles here?
 Here is the solution:
 we simulate it by prepending the literal string `'0.'` 
 before the integer result `"%05d"`. At a stroke of horrible type-violating magic
-that would make any compiler die in convulsions, we turned 12345 into 0.12345. We can do that whenever we know that the ratio
-will be less than one. I bet you missed seeing that trick above? 
+that would make any compiler die in convulsions, we turned 12345 into 0.12345. 
+We can do that whenever we know that the ratio
+will be less than one. I bet you missed seeing that trick above?
+
+Should you wish to print the ratio as a percentage, this will do it:
+
+{% highlight bash %}
+CR=$(( 10000*${SIZES[0]}/${SIZES[2]} )) # compression ratio x 10^4 ( xx.xx % )
+if [ $CR -gt 9999 ]; then 
+	printf "Warning, no compression achieved!\n"
+else 	
+	printf "Compression to:\t${CR: 0:2}.${CR: -2}%%\n"
+{% highlight bash %}
+
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
 There you have it, Dr Watson.
 
