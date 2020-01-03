@@ -62,13 +62,20 @@ Compression:\t0.%05d\n" ${SIZES[0]} ${SIZES[1]} ${SIZES[2]} ${SIZES[3]} \
 
 The last line is the actual fixed point (integer) calculation. We have chosen to calculate the
 ratio to five decimal places, so we premultiply by 100000. The five zeroes correspond
-to the five 'decimal' places in the formatting string above. We got this precision by
-making a temporary left shift by five decimal places, then doing normal integer division,
-followed by shifting the same number of places back the the right.
+to the five 'decimal' places we will get via the formatting string above.
+We got this precision by
+making a temporary left shift by five decimal places, carrying out ordinary integer division,
+followed by shifting the same number of places back to the right.
 
-How to right shift without a floating point division, though? This is the clever part:
-we simulate it by prepending the literal string `'0.'` before the integer result `"%05d"`. 
-Bash is just perfect for such textual hacks., as 'everything is just a string'. And there you have it, Dr Watson.
+How to shift right (divide by 100000) without a floating point number to hold 
+the decimal places, though? Are we just going round in circles here?
+
+Here is the solution:
+we simulate the division by prepending the literal string `'0.'` 
+before the integer result `"%05d"`. We can do that when we know that the ratio
+will be less than one. I bet you missed seeing that trick above? 
+Bash is just perfect for such textual hacks, as 'everything is just a string'.
+There you have it, Dr Watson.
 
 Check out the [TokenCrypt][tokencrypt] 
 
