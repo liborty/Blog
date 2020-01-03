@@ -71,8 +71,9 @@ How to shift right (divide by 100000) without a floating point number to hold
 the decimal places, though? Are we just going round in circles here?
 
 Here is the solution:
-we simulate the division by prepending the literal string `'0.'` 
-before the integer result `"%05d"`. We can do that when we know that the ratio
+we simulate it by prepending the literal string `'0.'` 
+before the integer result `"%05d"`. At a stroke of horrible type-violating magic
+that would make any compiler die in convulsions, we turned 12345 into 0.12345. We can do that whenever we know that the ratio
 will be less than one. I bet you missed seeing that trick above? 
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
 There you have it, Dr Watson.
