@@ -85,7 +85,7 @@ if [ $CR -gt 9999 ]; then
 	printf "Warning, no compression achieved!\n"
 else 	
 	printf "Compression to:\t${CR: 0:2}.${CR: -2}%%\n"
-{% highlight bash %}
+{% endhighlight %}
 
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
 There you have it, Dr Watson.
