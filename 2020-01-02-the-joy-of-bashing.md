@@ -67,8 +67,8 @@ making a temporary left shift by five decimal places, then doing normal integer 
 followed by shifting the same number of places back the the right.
 
 How to right shift without a floating point division, though? This is the clever part:
-we simulate it by prepending the literal string '0.' before the integer result. 
-Bash is just perfect for such textual hacks. And there you have it, Dr Watson.
+we simulate it by prepending the literal string `'0.'` before the integer result `"%05d"`. 
+Bash is just perfect for such textual hacks., as 'everything is just a string'. And there you have it, Dr Watson.
 
 Check out the [TokenCrypt][tokencrypt] 
 
