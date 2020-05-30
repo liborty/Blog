@@ -91,8 +91,10 @@ else
 {% endhighlight %}
 
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
-There you have it, Dr Watson.
 
-Check out the [TokenCrypt][tokencrypt] 
+Edit, Saturday, 30. May 2020 09:29PM 
+I have written a Bash script that implements these ideas, plus more. It is at the following github repository: [fdiv](https://github.com/liborty/fdiv)  
+
+Check out also [TokenCrypt]
 
 [tokencrypt]: https://github.com/liborty/TokenCrypt
