@@ -4,7 +4,8 @@ title: To Rust or not to Rust? That was my Challenge
 date:   2020-05-27
 categories: Errors, Rust programming
 ---
-# To Rust or not to Rust? That Was my Challenge
+# To Rust or not to Rust?
+# That is my Challenge
 # (A Personal Road to Golgotha)
 # by Rustafarian
 
