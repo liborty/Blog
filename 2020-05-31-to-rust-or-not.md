@@ -33,7 +33,7 @@ Mutability is actually quite a useful concept/distinction to make. A pleasant su
 
 My only gripe with this is that when you declare a lot of variables, the compiler remembers perfectly well which ones are mutable  but I often don't. I recommend adopting special case style, such as HolE CasE, so that they are immediately humanly recognisable. Akin to CAPITALS for constants.
 
-You also have to worry about `ownership` to solve the aliasing problem. 'Ownership' confers overwriting rights to a mutable variable and there can only ever be just one owner. For example, you can  share several pointers to an immutable item (so called 'borrowing') but not to a mutable one, that one requires unique ownership. I would have probably preferred the time honoured terminology of 'passing a pointer' instead of 'borrowing'. Inventing new terms for existing concepts 'just to be different' only adds potential confusion. Perhaps it was meant to convey that borrowed items should not be destroyed. However, it fails to persuade, as those who had lent their Ferrari to their teenage offspring will confirm.
+You also have to worry about `ownership` to solve the aliasing problem. 'Ownership' confers overwriting rights to a mutable variable and there can only ever be just one owner. For example, you can  share several pointers to an immutable item (so called 'borrowing') but not to a mutable one, that one requires unique 'borrowing'. I would have probably preferred the time honoured terminology of 'passing a pointer' instead of 'borrowing'. Inventing new terms for existing concepts only adds potential confusion. Perhaps it was meant to convey that borrowed items should not be destroyed. However, it fails to persuade, as those who had lent their Ferrari to their teenage offspring will confirm.
 
 All of this means that initially the compiler will complain like mad but its error messages are fairly self-explanatory and often it will even tell you what it wants you to do. You will get compiler errors even after you grasped these principles but perhaps not quite so many.
 
@@ -50,7 +50,7 @@ You must specify them in Cargo.toml at the top level of your project directory. 
 As if this was not complicated enough, some facilities of some crates are available only as their 'special features', which must be known by name and listed within square brackets, otherwise they will not work. This is annoying because typically somebody might avise you to use a particular crate but almost always forgets to tell you which of its 'special features' you need.
 
 #### Station Four - Async I/O
-This uses `futures` or place markers for some computation which is yet to finish. The concepts themselves are not difficult to grasp. Though you must beware that the results can come back in any unpredictable order. I like best the `!try_join(..)` macro and use it heavily to great effect.
+This uses `futures` or place markers for some computation which is yet to finish. The concepts themselves are not difficult to grasp. Though you must beware that the results can come back in any unpredictable order. I like best the `try_join!(..)` macro and use it heavily to great effect.
 
 That is not to say that I have not experienced a lot of practical difficulties. They were not so much with the concepts or the programming itself but rather with the state of the documentation and the crates, both being moving targets. It was not at all obvious which versions of which to use with which features and in what combinations, at what time. Different people used and recommended different crates in different ways and the same applied to the documentation. 
 
@@ -68,13 +68,13 @@ Still to come but I think I now have most of the components needed under my belt
 #### Station Eight - Error Handling
 When I first started writing this blog, it was all going to be just about error handling in Rust. That is how big a subject it is.  The difficulty is that in its generality, Rust admits to quite a few diverse styles and philosophies of error handling and most programmers have developed their own. 
 
-Some just use `!panic` macro a lot, others write their own error handling helper functions to provide more debugging information in a more general way, still others laboriously write out detailed implementations of their own custom error types for everything imaginable, in mostly forlorn hope of making them 'recoverable'. I believe that the general guidance is to lean towards the former in simple stand-alone applications and towards the latter when writing reusable crates.
+Some just use `panic!` macro a lot, others write their own error handling helper functions to provide more debugging information in a more general way, still others laboriously write out detailed implementations of their own custom error types for everything imaginable, in mostly forlorn hope of making them 'recoverable'. I believe that the general guidance is to lean towards the former in simple stand-alone applications and towards the latter when writing reusable crates.
 
 I myself had gone through several iterations of handling errors in different ways, mostly those in the middle of the road category. The Rust Book was not of much help in this regard. Yes, it does argue for error recovery but does not offer much practical help.  Then I came across the `anyhow` crate and I gladly threw all that previous rubbish away. 
 
 Besides recoverable/unrecoverable, I find another classification of errors useful: 
 
-- Hard errors, that is errors usually triggered by your own tests of some wrong/unexpected values, which ought to be reported immediately using the `!bail` macro from `anyhow` (or just `!panic` if you do not need much information and you just want to quit there and then).
+- Hard errors, that is errors usually triggered by your own tests of some wrong/unexpected values, which ought to be reported immediately using the `bail!` macro from `anyhow` (or just `panic!` if you do not need much information and you just want to quit there and then).
 
 - Errors returned from some function call, often to an external crate. These will be wrapped up in Result, so from purely technical point of view they need a different handling mechanism. These can be divided further into errors that:
 
