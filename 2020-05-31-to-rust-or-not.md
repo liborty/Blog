@@ -6,7 +6,7 @@ categories: Errors, Rust programming
 ---
 ## To Rust or not to Rust?
 ### That is my Road to Golgotha
-##### by Rustafarian
+##### by Liborty Rustafarian
 
 #### Introduction
 I have always had this perverse interest in new, complicated and difficult programming languages. What could then pose a better challenge than taking up Rust? However, Rust also has some good  (even excellent) points to commend it: 
