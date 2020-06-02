@@ -40,7 +40,7 @@ You also have to worry about `ownership` to fully solve the aliasing problem. 'O
 All of this means that initially the compiler will complain like mad but its error messages are fairly self-explanatory and often it will even tell you what it wants you to do. You will get compiler errors even after you grasped these principles but perhaps not quite so many.
 
 #### Station Two - Lifetimes
-I am leaving these to a future blog. Mostly because so far I have failed to get my head around the reasons why the lifetime annotations have to be quite so complicated (and yes, let us be blunt, so syntactically horrible). I just put them where the compiler tells me it wants them to be. Which is a horrible back-to-front approach but at the same time a testament to the Rust compiler's error reporting. With a better written program, they often go away anyway.
+I am leaving these to a future blog. Mostly because so far I have failed to get my head around the reasons why the lifetime annotations have to be quite so complicated (and yes, let us be blunt, so syntactically ugly). I just put them where the compiler tells me it wants them to be. Which is a horrible back-to-front approach but at the same time a testament to the Rust compiler's error reporting. With a better written program, they often go away anyway.
 
 #### Station Three - Crates
 Rust libraries are called crates and like everything else in Rust, they are remarkably safe, even to import from a vast collection by every Tom Dick and Harry at crates.io.
