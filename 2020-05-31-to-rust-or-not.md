@@ -33,7 +33,7 @@ Mutability is actually a very useful concept/distinction to make. After all, imm
 
 You can  share several pointers to an immutable item (so called 'borrowing') but not to a mutable one, that one requires unique 'borrowing'. I would have probably preferred the time honoured terminology of 'passing a pointer' instead of 'borrowing'. Inventing new terms for existing concepts only adds potential confusion. Perhaps it was meant to convey that borrowed items should not be destroyed. However, it fails to persuade, as those who had lent their Ferrari to their teenage offspring will often confirm.
 
-My only gripe with this is that when you pass around a lot of variables, the compiler remembers perfectly well which ones are (still) mutable but I often don't. I recommend adopting special case style, such as Capitalisation of the first letter, so that they are immediately humanly recognisable. Analagously  to all  CAPITALS for constants.
+My only gripe with this is that when you pass around a lot of variables, the compiler remembers perfectly well which ones are (still) mutable but I often don't. I recommend adopting special case style, such as capitalisation of their first letter for the Immutables, so that they are recognisable to humans. Analagously  to all  CAPITALS for constants.
 
 You also have to worry about `ownership` to fully solve the aliasing problem. 'Ownership' confers destruction (`drop`) rights and overwriting rights to a mutable variable. Ownership can be passed on through a function call but there can only ever be just one owner. (I am mildly surprised that they have not called a function call 'a sale').
 
