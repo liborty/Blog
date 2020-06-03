@@ -56,7 +56,7 @@ This uses `futures` or place markers for some computation which is yet to finish
 
 That is not to say that I have not experienced a lot of practical difficulties. They were not so much with the concepts or the programming itself but rather with the state of the documentation and the crates, both being moving targets. It was not at all obvious which versions of which to use with which features and in what combinations, at what time. Different people used and recommended different crates in different ways and the same applied to the documentation. 
 
-However, I believe that the situation has now somewhat settled away from 'the bleeding edge' and anyone embarking on this adventure now should find it a lot easier.
+However, I believe that the situation has now somewhat settled away from 'the bleeding edge' and anyone embarking upon this adventure now should find it a lot easier.
 
 #### Station Five - Modules
 This is one facility for which I have nothing but praise. Perhaps because the modules are so simple and Just Work. I have originally written my implementation as one largish file but once I have discovered the modules, it was a matter of minutes to split it into its logical parts. The whole project gained much needed structure and readability and perhaps even shorter recompilation times.
@@ -72,7 +72,7 @@ When I first started writing this blog, it was all going to be just about error 
 
 Some just use `panic!` macro a lot, others write their own error handling helper functions to provide more debugging information in a more general way, still others laboriously write out detailed implementations of their own custom error types for everything imaginable, in mostly forlorn hope of making them 'recoverable'. I believe that the general guidance is to lean towards the former in simple stand-alone applications and towards the latter when writing reusable crates.
 
-I myself had gone through several iterations of handling errors in different ways, mostly those in the middle of the road category. The Rust Book was not of much help in this regard. Yes, it does argue for error recovery but does not offer much practical help.  Then I came across the `anyhow` crate and I gladly threw all that previous rubbish away. 
+I myself had gone through several iterations of handling errors in different ways, mostly those in the middle of the road category. The Rust Book was not of much help in this regard. Yes, it does argue for error recovery but does not offer much practical help.  Then I came across the `anyhow` crate and I gladly moved over to using just the three macros therein. 
 
 Besides recoverable/unrecoverable, I find another classification of errors useful: 
 
@@ -80,7 +80,7 @@ Besides recoverable/unrecoverable, I find another classification of errors usefu
 
 - Errors returned from some function call, often to an external crate. These will be wrapped up in Result, so from purely technical point of view they need a different handling mechanism. These can be divided further into errors that:
 
-	- only need a `static &str` error message. This can be embedded in `.context('such and such error happened');` 
+	- only need a `static &str` error message. This can be embedded in `.context("such and such error");` 
 	where the dot follows a Result type returned by some function, that could be either `Ok(some valid value)` or `Error`.
 	Anyhow's `.context` thus acts rather like `.expect` but it automatically passes up its general `anyhow::Error`, whereas with .expect you are expected to choose/define your own error type and pass it up yourself. With that you might run into difficulties when several different types of Errors are  produced within the same function, such as IOError, HttpError, plus your own Error(s).
 	
