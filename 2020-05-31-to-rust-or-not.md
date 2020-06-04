@@ -86,9 +86,10 @@ Besides recoverable/unrecoverable, I find another classification of errors usefu
 	
 	- need some further processing, which might even include an immediate simple attempt at error recovery. Then use the `.with_context( some closure );` form. Here is an example of my usage in asynchronous I/O:
 	
-``` 
+```rust 
 .await.with_context(
-	|| format!("{}: getprice client-request failed at {},{}",
+	|| format!(
+	"{}: getprice client-request failed at {},{}",
 	file!(), line!(), column!()))?
 ```
 		
