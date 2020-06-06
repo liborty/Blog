@@ -6,7 +6,7 @@ categories: bash script retro programming
 ---
 # Fixing Bash with Fixed Point Arithmetic
 
-For my new open-source project [TokenCrypt][tokencrypt],
+For my open-source project [TokenCrypt](https://github.com/liborty/TokenCrypt),
 I used good old-fashioned Bash scripting. In the process I have become a fan of *retro programming*.
 
 I hear you exclaiming in horror: "What? No Python?".
@@ -32,7 +32,7 @@ C=$( awk "BEGIN { print $A / $B }" )
 Luckily, in most situations, there is a more efficient alternative:
 **fixed point arithmetic** implemented right there and then in Bash.
 
-####The Plan
+#### The Plan
 Suppose we want to calculate the ratio of the byte sizes of two directories, let us say to report the compression ratio. 
 
 By taking any ratio,
@@ -71,11 +71,11 @@ followed by shifting the same number of places back to the right.
 
 Good plan but how to shift right (divide by 100000) without a floating point type to hold the decimal places of the result? Are we going around in circles with this?
 
-####The Magic Explained 
+#### The Magic Explained 
 We just textually simulate the float number by prepending the literal string `'0.'` before the integer result. We can do that whenever we know that the ratio will be less than one. I bet you missed seeing that trick above?
 
 At a stroke of horrible type-violating magic
-that would make any compiler die in convulsions, we turned 1234 into 0.01234. In Bash this is not nearly as horrible as it looks because everything returns only strings, anyway. The leading zero in the formatting string  `"%05d"` that follows the decimal point is also important. It creates significant leading zeroes, if any.
+that would make any compiler die in convulsions, we turned 1234 into 0.01234. In Bash this is not nearly as horrible as it looks because everything returns only strings, anyway. The leading zero in the formatting string  `"%05d"` that follows the decimal point is also important. It pads with  significant leading zeroes, if any. Of course, after the decimal point, they become significant.
 
 
 Should you wish to print the ratio as a percentage, this will do it:
@@ -91,7 +91,7 @@ else
 
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
 
-####References
+#### References
 
 I have written a Bash script [fdiv](https://github.com/liborty/fdiv) that implements these ideas, plus more, to give the best 'floating point' results of any integer division.
 
