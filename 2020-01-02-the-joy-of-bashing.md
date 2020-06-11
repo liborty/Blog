@@ -25,7 +25,7 @@ Suppose we want to do a simple floating point division C=A/B.
 We could reach for `awk` (`dc,bc`, etc.) but the code becomes a bit messy 
 and uncharacteristically long-winded for Bash. Most of the facilities that
 these external programs offer are an overkill. Plus we have to start new
-sub-processes for them, even for every simple calculations such as this example: 
+sub-processes for them, even for very simple calculations such as this example: 
 ```bash
 C=$( awk "BEGIN { print $A / $B }" )
 ```
