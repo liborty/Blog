@@ -6,6 +6,8 @@ categories: bash script retro programming
 ---
 # Fixing Bash with Fixed Point Arithmetic
 
+### by Liborty Rustafarian
+
 For my open-source project [TokenCrypt](https://github.com/liborty/TokenCrypt),
 I used good old-fashioned Bash scripting. In the process I have become a fan of *retro programming*.
 
