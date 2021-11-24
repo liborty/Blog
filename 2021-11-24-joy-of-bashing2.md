@@ -63,9 +63,9 @@ done
 wait # for all proccessfiles to finish
 ```
 
-Bash functions are executed in a sub shell only when their invocation ends in `&`. When `$BJ` variable is programmatically unset, it simply disappears and execution is thereafter done in-place. Self modifying program, ha! (The beautitudes of 'everything is just text' Bash).
+Bash functions are executed in a sub shell only when their invocation ends in `&`. When `$BJ` variable is programmatically unset, it simply disappears and execution is thereafter done in-place. Self modifying program, ha! (The beautitudes of 'everything is just text' in Bash).
 
-We use logical or `||` instead of `if`. It only executes the last command, unsetting `BJ=''`, if `$BJ` was previously set and the size of the current `$INFILE` has fallen below the threshold `$BACKSZ`. The only check performed thereafter is the first part: [ -z "$BJ" ] is `$BJ` unset? (evaluates to true and exits || immediately). If there are lots of short files, it saves the relatively expensive `stat` system calls on all the rest of them. They are already sorted, so none of them will exceed the threshold anyway.
+We use logical or `||` instead of `if`. It only executes the last command, unsetting `BJ=''`, if `$BJ` was previously set and the size of the current `$INFILE` has fallen below the threshold `$BACKSZ`. The only check performed thereafter is the first part: `[ -z "$BJ" ]` is `$BJ` unset? (evaluates to true and exits `||` immediately). If there are lots of short files, it saves the relatively expensive `stat` system calls on all the rest of them. They are already sorted, so none of them will exceed the threshold anyway.
 
 ## Link References
 
