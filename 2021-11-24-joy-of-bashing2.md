@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Joy of Bashing 2
+title: The Joy of Bashing 2
 date:   2021-11-24
 categories: bash script retro programming
 ---
