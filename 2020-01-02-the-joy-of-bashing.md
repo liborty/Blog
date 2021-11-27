@@ -79,16 +79,13 @@ We just textually simulate the float number by prepending the literal string `'0
 At a stroke of horrible type-violating magic
 that would make any compiler die in convulsions, we turned 1234 into 0.01234. In Bash this is not nearly as horrible as it looks because everything returns only strings, anyway. The leading zero in the formatting string  `"%05d"` that follows the decimal point is also important. It pads with  significant leading zeroes, if any. Of course, after the decimal point, they become significant.
 
-
-Should you wish to print the ratio as a percentage, this will do it:
+This will print the compression ratio (CR) as a percentage, rounded to one hundredth of a percent. All done in integer arithmetic:
 
 ```bash
 # compression ratio x 10^4, presented as xx.xx%
-CR=$(( 10000*${SIZES[0]}/${SIZES[2]} )) 
-if [ $CR -gt 9999 ]; then 
-	printf "Warning, no compression achieved!\n"
-else  
-	printf "Compression to:\t${CR: 0:2}.${CR: -2}%%\n"
+# adding 5 and dividing by 10 achieves rounding
+CR=$(( (5+100000*${SIZES[0]}/${SIZES[2]})/10 )) # rounded to two d.p.	
+printf "$PROGN ${SIZES[3]}: ${SIZES[2]} => ${SIZES[1]}: ${SIZES[0]} (${CR: 0:2}.${CR: 2:4} %%)\n"
 ```
 
 Bash is just perfect for such textual hacks, as 'everything is just a string'.
