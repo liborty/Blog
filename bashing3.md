@@ -19,13 +19,13 @@ Fortunately, there is a much better way of branching on boolean tests, as exempl
 
 When evaluating a logical (boolean) expression, in any context, the value of the result is often known well before all the parts of the expression have been evalauted. How is this even possible?
 
-In a conjuction (&&), the whole result is known to be false as soon as the first conjuct returns `false`.
+In a conjuction (`&&`), the whole result is known to be false as soon as the first conjuct returns `false`.
 
-Conversely, in a disjunction (||), the whole result is known to be true as soon as the first disjunct returns `true`.
+Conversely, in a disjunction (`||`), the whole result is known to be true as soon as the first disjunct returns `true`.
 
 This property of logic is used in AI for efficient evaluation of so called AND-OR trees in game-playing and search applications. However, we can use it too, even in our simple `bash` programs.
 
-## Improving the if statements
+## Going beyond `if`
 
 In keeping with the previous section, we introduce two kinds of conditionals:
 
