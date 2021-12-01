@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Better Branching in Bash
+title: Better Bash Branching
 date:   2021-11-30
 categories: bash script retro programming
 ---
 
-# Better Branching in Bash
+# Better Bash Branching
 
 ## Libor Spacek (liborty@github.com)
 
@@ -25,7 +25,7 @@ Conversely, in a disjunction (`||`), the whole result is known to be true as soo
 
 This property of logic is used in AI for efficient evaluation of so called AND-OR trees in game-playing and search applications. However, we can use it too, even in our simple `bash` programs.
 
-## Going beyond `if`
+## Going beyond if
 
 In keeping with the previous section, we introduce two kinds of conditionals:
 
