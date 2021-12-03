@@ -31,14 +31,16 @@ In keeping with the previous section, we introduce two kinds of conditionals:
 
 ### The positive conditional
 
-`[ test1 ] && [ test2 ] && [ testn ] && { do-something-positive }`
+```bash
+[ test1 ] && [ test2 ] && [ testn ] && { do-something-positive }
+```
 
 Here the block of statements at the end is executed only if each of the tests 1..n returns `true`. As soon as the first one evaluates to `false`, the whole thing quits (hence the expression 'short circuit evaluation').
 
 ### The negative conditional
-
-`[ test1 ] || [ test2 ] || [ testn ] || { do-something-negative }`
-
+```bash
+[ test1 ] || [ test2 ] || [ testn ] || { do-something-negative }
+```
 Here the block at the end is executed only if each of the tests 1..n returns `false`. As soon as the first one evaluates to `true`, the whole thing quits.
 
 ## Discussion
